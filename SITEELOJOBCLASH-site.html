@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Elojob Clash Royale</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg: #020822;
+  --bg2:#04133b;
+  --card:#071941;
+  --text:#f7f8ff;
+  --muted:#b4bff8;
+  --primary:#ffcc29;
+  --primary-2:#ff9f1a;
+  --accent:#23d366;
+  --btn-blue:#2456ff;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top,var(--bg2),var(--bg));
+}
+.app{
+  max-width:980px;
+  margin:0 auto;
+  padding:24px 16px 56px;
+}
+
+/* HEADER GERAL */
+.brand{
+  font-weight:800;
+  letter-spacing:0.06em;
+  font-size:16px;
+  color:var(--muted);
+}
+
+/* VIEWS */
+.view{display:none;}
+.view.active{display:block;}
+
+/* TITULO HOME */
+.title{
+  font-size:44px;
+  font-weight:900;
+  margin:22px 0 10px;
+  color:#ffe271;
+}
+.subtitle{
+  color:var(--muted);
+  margin-bottom:12px;
+  max-width:520px;
+}
+
+/* BOTOES GRANDES */
+.main-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.btn{
+  border:none;
+  cursor:pointer;
+  border-radius:18px;
+  padding:18px 18px;
+  font-size:18px;
+  font-weight:800;
+  color:#050814;
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+}
+.btn-secondary{
+  background:linear-gradient(135deg,var(--btn-blue),#6f8cff);
+  color:#f9f9ff;
+}
+.btn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.08);
+}
+.btn:active{
+  transform:translateY(1px) scale(.98);
+  box-shadow:0 6px 16px rgba(0,0,0,.55);
+}
+.label-main{
+  font-size:16px;
+}
+.label-sub{
+  font-size:13px;
+  color:var(--muted);
+}
+.btn-icon{
+  font-size:22px;
+}
+
+/* LEGENDA GRANDE */
+.legend-block{
+  margin-top:26px;
+  padding:18px 16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(10,22,60,.96),rgba(3,10,40,.98));
+  border:1px solid rgba(255,255,255,.06);
+}
+.legend-title{
+  font-weight:700;
+  font-size:15px;
+  margin-bottom:6px;
+}
+.legend-text{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* CARD GENERICO */
+.card{
+  margin-top:26px;
+  padding:18px 16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(15,31,77,.9),rgba(3,9,39,.95));
+  border:1px solid rgba(255,255,255,.05);
+}
+
+/* CONTATO DONO */
+.contact-header{
+  font-size:16px;
+  margin-bottom:10px;
+}
+.contact-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(2,10,40,.9);
+}
+.contact-info b{font-size:16px;}
+.chip{
+  margin-top:4px;
+  font-size:13px;
+  color:var(--muted);
+}
+.btn-wa{
+  background:var(--accent);
+  border:none;
+  color:#04210d;
+  font-weight:800;
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+}
+.btn-wa span{font-size:17px;}
+
+/* PÁGINAS INTERNAS */
+.page-title{
+  font-size:26px;
+  font-weight:800;
+  margin:10px 0 4px;
+}
+.page-sub{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:14px;
+}
+.back-btn{
+  border:none;
+  background:none;
+  color:var(--muted);
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  padding:0;
+  margin-bottom:6px;
+}
+.back-btn span{
+  font-size:18px;
+}
+
+/* LISTA DE PUSHERS */
+.pusher-list{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.pusher-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(5,18,54,.95);
+  border:1px solid rgba(255,255,255,.06);
+}
+.pusher-main{
+  font-size:15px;
+}
+.pusher-main b{
+  font-size:16px;
+}
+.pusher-main .line2{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* FILTROS */
+.filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+  margin-bottom:8px;
+}
+.filter-btn{
+  border:none;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+  background:#030923;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,.15);
+}
+.filter-btn.active{
+  background:var(--accent);
+  color:#041208;
+  border-color:transparent;
+}
+
+/* PREÇOS */
+.price-table{
+  margin:12px 0 16px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.07);
+}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 12px;
+  background:rgba(8,22,70,.96);
+}
+.price-row:nth-child(odd){
+  background:rgba(12,32,92,.96);
+}
+.price-label{
+  font-size:14px;
+}
+.price-value{
+  font-weight:800;
+  color:#ffd750;
+}
+
+/* CALCULADORA */
+.calc-grid{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:6px;
+}
+.label{
+  font-size:13px;
+  margin-bottom:4px;
+}
+.input{
+  width:100%;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.16);
+  padding:10px 11px;
+  font-size:15px;
+  background:#030923;
+  color:var(--text);
+}
+.input:focus{
+  outline:2px solid #446dff;
+}
+.calc-total-label{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+}
+.calc-total{
+  font-size:24px;
+  font-weight:900;
+  color:#ffe46b;
+}
+
+/* BOOST / PRIORIDADE */
+.options-row{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:10px;
+}
+.option-pill{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(5,18,54,.95);
+  border:1px solid rgba(255,255,255,.08);
+  font-size:13px;
+}
+.option-pill span b{
+  font-size:14px;
+}
+
+/* RESPONSIVO */
+@media (min-width:720px){
+  .title{font-size:52px;}
+  .app{padding-top:32px;}
+  .main-buttons{flex-direction:row;flex-wrap:wrap;}
+  .btn{flex:1;text-align:left;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- VIEW HOME -->
+  <section id="view-home" class="view active">
+    <div class="brand">HOLODROP</div>
+    <h1 class="title">Elojob Clash Royale</h1>
+    <p class="subtitle">
+      Push de arenas, cálculo automático de preço, prioridade na fila e coach com jogador profissional.
+    </p>
+
+    <div class="main-buttons">
+      <button class="btn btn-primary" onclick="openView('precos')">
+        <div>
+          <span class="label-main">Tabela de preços</span><br>
+          <span class="label-sub">Veja quanto custa sair da sua arena atual</span>
+        </div>
+        <span class="btn-icon">⚙️</span>
+      </button>
+
+      <button class="btn btn-secondary" onclick="openView('push')">
+        <div>
+          <span class="label-main">Push de arenas</span><br>
+          <span class="label-sub">Escolha um pusher e feche direto no WhatsApp</span>
+        </div>
+        <span class="btn-icon">🚀</span>
+      </button>
+
+      <button class="btn btn-secondary" onclick="openView('coach')">
+        <div>
+          <span class="label-main">Coach Clash</span><br>
+          <span class="label-sub">Formando um novo pro player</span>
+        </div>
+        <span class="btn-icon">🎯</span>
+      </button>
+    </div>
+
+    <!-- LEGENDA GRANDE -->
+    <div class="legend-block">
+      <div class="legend-title">O QUE É O ELOJOB</div>
+      <div class="legend-text">
+        Aqui você encontra grandes jogadores e de confiança, prontos para upar sua conta e te poupar
+        tempo e paciência. Você escolhe o serviço, combina direto com o pusher e acompanha o progresso.
+      </div>
+
+      <div class="legend-title" style="margin-top:10px;">COMO O ELOJOB FUNCIONA</div>
+      <div class="legend-text">
+        Depois de entrar em contato com um pusher, você vai passar o e-mail utilizado no Supercell ID
+        da sua conta. O pusher vai integrar esse e-mail no Clash Royale dele e mandar um código para você.
+        Com esse código, ele entra na sua conta e conclui o seu pedido de forma rápida e de confiança.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="contact-header">Precisa de ajuda? Fale com o dono</div>
+      <div class="contact-box">
+        <div class="contact-info">
+          <b>Gustavo</b>
+          <div class="chip">
+            WhatsApp 62 98272-7545<br>
+            TikTok @elojobclashroy
+          </div>
+        </div>
+        <button class="btn-wa" onclick="window.open('https://wa.me/5562982727545','_blank')">
+          <span>💬</span> WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW PUSHERS -->
+  <section id="view-push" class="view">
+    <button class="back-btn" onclick="openView('home')">
+      <span>←</span> Voltar para início
+    </button>
+    <h2 class="page-title">Push de arenas</h2>
+    <p class="page-sub">
+      Escolha um pusher de confiança, combine o serviço e deixa que a gente sobe sua conta.
+    </p>
+
+    <div class="page-sub">Filtros rápidos</div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="todos" onclick="setFilter(this)">Todos</button>
+      <button class="filter-btn" data-filter="topbr" onclick="setFilter(this)">Top BR</button>
+      <button class="filter-btn" data-filter="maior" onclick="setFilter(this)">Maior campeão</button>
+      <button class="filter-btn" data-filter="mais10k" onclick="setFilter(this)">Mais de 10k troféus</button>
+      <button class="filter-btn" data-filter="menos10k" onclick="setFilter(this)">Menos de 10k troféus</button>
+    </div>
+
+    <div class="pusher-list" id="pushers"></div>
+  </section>
+
+  <!-- VIEW PREÇOS -->
+  <section id="view-precos" class="view">
+    <button class="back-btn" onclick="openView('home')">
+      <span>←</span> Voltar para início
+    </button>
+    <h2 class="page-title">Tabela de preços</h2>
+    <p class="page-sub">
+      Valores fixos por arena. Calcule o preço final do seu serviço em poucos segundos.
+    </p>
+
+    <div class="price-table">
+      <div class="price-row">
+        <div class="price-label">Arena 1 a 10</div>
+        <div class="price-value">R$ 10 por arena</div>
+      </div>
+      <div class="price-row">
+        <div class="price-label">Arena 10 a 15</div>
+        <div class="price-value">R$ 13 por arena</div>
+      </div>
+      <div class="price-row">
+        <div class="price-label">Arena 15 a 20</div>
+        <div class="price-value">R$ 15 por arena</div>
+      </div>
+      <div class="price-row">
+        <div class="price-label">Arena 20 a 25</div>
+        <div class="price-value">R$ 20 por arena</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:4px;">Calcule seu serviço</h3>
+    <div class="calc-grid">
+      <div>
+        <div class="label">Em qual arena você está agora</div>
+        <input id="from" class="input" type="number" min="1" max="25" value="1">
+      </div>
+      <div>
+        <div class="label">Em qual arena deseja chegar</div>
+        <input id="to" class="input" type="number" min="1" max="25" value="10">
+      </div>
+
+      <div class="options-row">
+        <div class="option-pill">
+          <span><b>Prioridade na fila</b> · + R$ 4,00 no total</span>
+          <label>
+            <input type="checkbox" id="priority" style="margin-right:4px;"> Ativar
+          </label>
+        </div>
+        <div class="option-pill">
+          <span><b>Boost (2 pushers jogando)</b> · + R$ 6,00 por arena</span>
+          <label>
+            <input type="checkbox" id="boost" style="margin-right:4px;"> Ativar
+          </label>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary" onclick="calcTotal()">
+        <div>
+          <span class="label-main">Calcular preço final</span><br>
+          <span class="label-sub">Incluindo prioridade e boost se ativados</span>
+        </div>
+        <span class="btn-icon">🧮</span>
+      </button>
+      <div>
+        <div class="calc-total-label">Preço final</div>
+        <div id="total" class="calc-total">R$ 0,00</div>
+      </div>
+      <button class="btn btn-primary" onclick="openView('push')">
+        <div>
+          <span class="label-main">Ver lista de pushers</span><br>
+          <span class="label-sub">Escolha quem vai subir sua conta</span>
+        </div>
+        <span class="btn-icon">📱</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- VIEW COACH -->
+  <section id="view-coach" class="view">
+    <button class="back-btn" onclick="openView('home')">
+      <span>←</span> Voltar para início
+    </button>
+    <h2 class="page-title">Coach Clash</h2>
+    <p class="page-sub">
+      Formando um novo pro player no Clash Royale.
+    </p>
+
+    <div class="card">
+      <p class="page-sub">
+        Aqui temos diversos jogadores com técnica surreal, e quem mais se destaca é o nosso jogador <b>PHZIN</b>,
+        que já foi destaque várias vezes no cenário nacional de Clash Royale. Agora ele está aqui para ajudar
+        você a se tornar um jogador de destaque em qualquer lugar que jogar.
+      </p>
+      <p class="page-sub">
+        Escolha abaixo um dos planos de curso e chame o PHZIN diretamente no WhatsApp:
+        <b>11 94532-9164</b>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 class="page-title" style="font-size:20px;margin-bottom:6px;">Pacote Bom Progresso – R$ 15</h3>
+      <p class="page-sub" style="margin-bottom:6px;">Para quem quer corrigir erros básicos e organizar o jogo.</p>
+      <ul style="font-size:14px; padding-left:20px; margin-top:0;">
+        <li>Análise de até 3 partidas.</li>
+        <li>Auxílio na montagem de decks que funcionam em qualquer arena.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="page-title" style="font-size:20px;margin-bottom:6px;">Pacote Player Avançado – R$ 25</h3>
+      <p class="page-sub" style="margin-bottom:6px;">Focado em quem já joga bem e quer subir de nível.</p>
+      <ul style="font-size:14px; padding-left:20px; margin-top:0;">
+        <li>Análise de até 6 partidas (em call).</li>
+        <li>Auxílio na montagem de decks que funcionam para o seu estilo de jogo.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="page-title" style="font-size:20px;margin-bottom:6px;">Pacote Pro (1 semana) – R$ 80</h3>
+      <p class="page-sub" style="margin-bottom:6px;">Treino curto e intenso para evoluir rápido.</p>
+      <ul style="font-size:14px; padding-left:20px; margin-top:0;">
+        <li>Análise de partidas ilimitadas (em call) durante 7 dias.</li>
+        <li>Auxílio na montagem de decks que funcionam.</li>
+        <li>Acompanhamento exclusivo e individual durante a duração do pacote.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 class="page-title" style="font-size:20px;margin-bottom:6px;">Pacote Super Pro (mensal) – R$ 180</h3>
+      <p class="page-sub" style="margin-bottom:6px;">Para quem quer tratar Clash como um projeto longo.</p>
+      <ul style="font-size:14px; padding-left:20px; margin-top:0;">
+        <li>Análise ilimitada de partidas durante todo o mês.</li>
+        <li>Auxílio na montagem de decks que funcionam.</li>
+        <li>Acompanhamento exclusivo e individual durante a duração do pacote.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="btn-wa" onclick="window.open('https://wa.me/5511945329164','_blank')">
+        <span>💬</span> Falar com PHZIN no WhatsApp
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function openView(target){
+  const views = {
+    home: document.getElementById('view-home'),
+    push: document.getElementById('view-push'),
+    precos: document.getElementById('view-precos'),
+    coach: document.getElementById('view-coach')
+  };
+  Object.values(views).forEach(v => v.classList.remove('active'));
+  if(target === 'push') views.push.classList.add('active');
+  else if(target === 'precos') views.precos.classList.add('active');
+  else if(target === 'coach') views.coach.classList.add('active');
+  else views.home.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// lista de pushers com flags para filtros
+const dados = [
+  {nome:"Eduardo",  info:"15k troféus",                                zap:"557592354433",   topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Carlos",   info:"15k troféus",                                zap:"5511963428713",  topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Luiz",     info:"15k troféus",                                zap:"556181849427",   topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Kawan",    info:"15k troféus",                                zap:"558791528427",   topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Shairon",  info:"9k troféus",                                 zap:"558594134425",   topBr:false, maior:false, mais10k:false, menos10k:true},
+  {nome:"Heitor",   info:"15k troféus · maior campeão",                zap:"556993987664",   topBr:false, maior:true,  mais10k:true,  menos10k:false},
+  {nome:"Miguel",   info:"9500 troféus",                               zap:"5511960660886",  topBr:false, maior:false, mais10k:false, menos10k:true},
+  {nome:"Lucas",    info:"15k troféus",                                zap:"556281454360",   topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Phzin",    info:"15k troféus · top BR · maior campeão",       zap:"5511945329164",  topBr:true,  maior:true,  mais10k:true,  menos10k:false},
+  {nome:"Thiago",   info:"10k troféus",                                zap:"556196889923",   topBr:false, maior:false, mais10k:true,  menos10k:true},
+  {nome:"Guilherme",info:"15k troféus",                                zap:"5511917827174",  topBr:false, maior:false, mais10k:true,  menos10k:false},
+  {nome:"Lukeras",  info:"9500 troféus",                               zap:"554598111057",   topBr:false, maior:false, mais10k:false, menos10k:true},
+  {nome:"Sauh",     info:"15k troféus · maior campeão",                zap:"17373141437",    topBr:false, maior:true,  mais10k:true,  menos10k:false},
+  {nome:"Gustavo",  info:"15k troféus · maior campeão",                zap:"5562982727545",  topBr:false, maior:true,  mais10k:true,  menos10k:false}
+];
+
+let filtroAtual = "todos";
+
+function renderPushers(){
+  const lista = document.getElementById('pushers');
+  lista.innerHTML = dados
+    .filter(p => {
+      if(filtroAtual === "todos") return true;
+      if(filtroAtual === "topbr") return p.topBr;
+      if(filtroAtual === "maior") return p.maior;
+      if(filtroAtual === "mais10k") return p.mais10k;
+      if(filtroAtual === "menos10k") return p.menos10k;
+      return true;
+    })
+    .map(p => `
+      <div class="pusher-card">
+        <div class="pusher-main">
+          <b>${p.nome}</b><br>
+          <span class="line2">🏆 ${p.info}</span>
+        </div>
+        <button class="btn-wa" onclick="window.open('https://wa.me/${p.zap}','_blank')">
+          <span>💬</span> WhatsApp
+        </button>
+      </div>
+    `).join("");
+}
+
+function setFilter(btn){
+  const valor = btn.getAttribute('data-filter');
+  filtroAtual = valor;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPushers();
+}
+
+// regras de preço
+function pricePerArena(n){
+  if(n >= 1 && n < 10) return 10;
+  if(n >= 10 && n < 15) return 13;
+  if(n >= 15 && n < 20) return 15;
+  if(n >= 20 && n < 25) return 20;
+  return 0;
+}
+
+function calcTotal(){
+  const from = parseInt(document.getElementById('from').value, 10);
+  const to = parseInt(document.getElementById('to').value, 10);
+  const priority = document.getElementById('priority').checked;
+  const boost = document.getElementById('boost').checked;
+
+  if(isNaN(from) || isNaN(to) || from < 1 || to > 25 || from >= to){
+    document.getElementById('total').textContent = "Verifique as arenas";
+    return;
+  }
+  let total = 0;
+  let arenas = 0;
+  for(let i = from; i < to; i++){
+    total += pricePerArena(i);
+    arenas++;
+  }
+
+  if(priority){
+    total += 4; // prioridade é valor fixo
+  }
+  if(boost){
+    total += 6 * arenas; // R$ 6 por arena
+  }
+
+  document.getElementById('total').textContent = total.toLocaleString("pt-BR", {
+    style:"currency",
+    currency:"BRL"
+  });
+}
+
+// inicializa
+renderPushers();
+</script>
+
+</body>
+</html>
